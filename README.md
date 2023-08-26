@@ -14,3 +14,10 @@ How to run on Win?
 UI - extra stats?
 onheap / offheap? http://localhost:4040/executors/
 	exec loss reason?
+
+## Stuff got done
+
+Docker install
+Spark install
+Spark verified
+Hadoop install - in prog
