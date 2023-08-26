@@ -60,4 +60,15 @@ Hadoop install
 Winutils install
 Ran WordCount example - error output?
 
+## Refs
+
+https://pages.databricks.com/rs/094-YMS-629/images/LearningSpark2.0.pdf
+
+http://localhost:4040/environment/
+
+https://stackoverflow.com/questions/51895267/how-to-setup-spark-on-windows-10-step-by-step
+
+!!! https://github.com/steveloughran/winutils/blob/master/hadoop-3.0.0/bin/winutils.exe
+https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+
 
