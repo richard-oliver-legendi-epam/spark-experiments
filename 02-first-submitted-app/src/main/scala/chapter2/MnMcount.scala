@@ -19,13 +19,16 @@ object MnMcount {
       print("Usage: MnMcount <mnm_file_dataset>")
       sys.exit(1)
     }
+	
     // get the M&M data set file name
     val mnmFile = args(0)
-    // read the file into a Spark DataFrame
+    
+	// read the file into a Spark DataFrame
     val mnmDF = spark.read.format("csv")
       .option("header", "true")
       .option("inferSchema", "true")
       .load(mnmFile)
+	
     // display DataFrame
     mnmDF.show(5, false)
 
@@ -52,4 +55,5 @@ object MnMcount {
     caCountMnNDF.show(10)
   }
 }
+
 // scalastyle:on println
