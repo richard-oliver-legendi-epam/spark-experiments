@@ -16,3 +16,11 @@ https://stackoverflow.com/questions/27717379/spark-how-to-run-spark-file-from-sp
 
 Or in the spark-shell itself?
     scala>> :load PATH_TO_FILE
+
+
+## For the scripts
+
+        ...
+        Spark context Web UI available at http://host.docker.internal:4040
+        Spark context available as 'sc' (master = local[*], app id = local-...).
+        Spark session available as 'spark'.
