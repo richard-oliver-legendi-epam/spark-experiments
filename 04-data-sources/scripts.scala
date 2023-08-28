@@ -38,3 +38,6 @@ spark.sql("""SELECT delay, origin, destination,
  | END AS Flight_Delays
  | FROM us_delay_flights_tbl
  | ORDER BY origin, delay DESC""").show(10)
+
+// As an exercise, try converting the other two SQL queries to use the DataFrame API.
+
