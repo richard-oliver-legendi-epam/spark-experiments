@@ -48,3 +48,7 @@ spark.sql("""SELECT delay, origin, destination,
 
 // As an exercise, try converting the other two SQL queries to use the DataFrame API.
 
+spark.sql("CREATE DATABASE learn_spark_db")
+spark.sql("USE learn_spark_db")
+
+spark.sql("CREATE TABLE managed_us_delay_flights_tbl (date STRING, delay INT, distance INT, origin STRING, destination STRING)")
