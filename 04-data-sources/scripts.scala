@@ -69,3 +69,6 @@ spark.sql("""SELECT * FROM longer_flights""").show(10)
 
 // Global temp view was not found for whatever reason...
 
+spark.catalog.dropGlobalTempView("longer_flights")
+spark.catalog.dropTempView("longer_flights")
+spark.catalog.dropTempView("long_flights")
