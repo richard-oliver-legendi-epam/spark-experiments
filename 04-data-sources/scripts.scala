@@ -52,3 +52,5 @@ spark.sql("CREATE DATABASE learn_spark_db")
 spark.sql("USE learn_spark_db")
 
 spark.sql("CREATE TABLE managed_us_delay_flights_tbl (date STRING, delay INT, distance INT, origin STRING, destination STRING)")
+
+spark.sql("""CREATE TABLE us_delay_flights_tbl(date STRING, delay INT, distance INT, origin STRING, destination STRING) USING csv OPTIONS (PATH '/data/departuredelays.csv')""")
