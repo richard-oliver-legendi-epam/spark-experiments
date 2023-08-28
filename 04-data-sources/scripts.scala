@@ -72,3 +72,10 @@ spark.sql("""SELECT * FROM longer_flights""").show(10)
 spark.catalog.dropGlobalTempView("longer_flights")
 spark.catalog.dropTempView("longer_flights")
 spark.catalog.dropTempView("long_flights")
+
+spark.catalog.listDatabases()
+spark.catalog.listTables()
+spark.catalog.listColumns("us_delay_flights_tbl")
+
+spark.catalog.listColumns("us_delay_flights_tbl").collect().foreach(println)
+
