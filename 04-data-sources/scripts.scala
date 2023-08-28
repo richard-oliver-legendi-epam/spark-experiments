@@ -54,3 +54,7 @@ spark.sql("USE learn_spark_db")
 spark.sql("CREATE TABLE managed_us_delay_flights_tbl (date STRING, delay INT, distance INT, origin STRING, destination STRING)")
 
 spark.sql("""CREATE TABLE us_delay_flights_tbl(date STRING, delay INT, distance INT, origin STRING, destination STRING) USING csv OPTIONS (PATH '/data/departuredelays.csv')""")
+
+spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").createOrReplaceTempView("long_flights")
+
+spark.sql("""SELECT * FROM long_flights""").show(10)
