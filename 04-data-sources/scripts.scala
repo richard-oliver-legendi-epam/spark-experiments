@@ -6,14 +6,11 @@ val spark = SparkSession
  .getOrCreate()
 
 // Path to data set
-val csvFile="/databricks-datasets/learning-spark-v2/flights/departuredelays.csv"
+val csvFile="data/departuredelays.csv"
 
 // Read and create a temporary view
 // Infer schema (note that for larger files you may want to specify the schema)
-val df = spark.read.format("csv")
- .option("inferSchema", "true")
- .option("header", "true")
- .load(csvFile)
+val df = spark.read.format("csv").option("inferSchema", "true").option("header", "true").load(csvFile)
 
 // Create a temporary view
 df.createOrReplaceTempView("us_delay_flights_tbl")
