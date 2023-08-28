@@ -24,3 +24,6 @@ val schema = "date STRING, delay INT, distance INT, origin STRING, destination S
 val df = spark.read.format("csv").option("header", "true").schema(schema).load(csvFile)
 
 spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").show(10)
+
+spark.sql("""SELECT date, delay, origin, destination FROM us_delay_flights_tbl WHERE delay > 120 AND ORIGIN = 'SFO' AND DESTINATION = 'ORD' ORDER by delay DESC""").show(10)
+
