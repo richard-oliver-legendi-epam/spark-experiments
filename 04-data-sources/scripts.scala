@@ -25,6 +25,13 @@ val df = spark.read.format("csv").option("header", "true").schema(schema).load(c
 
 spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").show(10)
 
+// Rewritten with DataFrame
+// NOTE orderBy is descending by default, otherwise we can use sort(desc("distance))
+
+df.select("distance", "origin", "destination").where("distance > 1000").orderBy("distance").show(10)
+df.select("distance", "origin", "destination").where("distance > 1000").sort(desc("distance")).show(10)
+df.select("distance", "origin", "destination").where("distance > 1000").sort("distance").show(10)
+
 spark.sql("""SELECT date, delay, origin, destination FROM us_delay_flights_tbl WHERE delay > 120 AND ORIGIN = 'SFO' AND DESTINATION = 'ORD' ORDER by delay DESC""").show(10)
 
 spark.sql("""SELECT delay, origin, destination,
