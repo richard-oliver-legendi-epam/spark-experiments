@@ -79,3 +79,7 @@ spark.catalog.listColumns("us_delay_flights_tbl")
 
 spark.catalog.listColumns("us_delay_flights_tbl").collect().foreach(println)
 
+
+val usFlightsDF = spark.sql("SELECT * FROM us_delay_flights_tbl")
+val usFlightsDF2 = spark.table("us_delay_flights_tbl")
+
