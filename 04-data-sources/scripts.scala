@@ -22,3 +22,5 @@ df.createOrReplaceTempView("us_delay_flights_tbl")
 val schema = "date STRING, delay INT, distance INT, origin STRING, destination STRING"
 
 val df = spark.read.format("csv").option("header", "true").schema(schema).load(csvFile)
+
+spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").show(10)
