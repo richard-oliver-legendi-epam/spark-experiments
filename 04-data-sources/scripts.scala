@@ -57,4 +57,15 @@ spark.sql("""CREATE TABLE us_delay_flights_tbl(date STRING, delay INT, distance 
 
 spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").createOrReplaceTempView("long_flights")
 
+spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 1000 ORDER BY distance DESC""").createOrReplaceGlobalTempView("long_flights")
+
 spark.sql("""SELECT * FROM long_flights""").show(10)
+
+
+spark.sql("""SELECT distance, origin, destination FROM us_delay_flights_tbl WHERE distance > 5000 ORDER BY distance DESC""").createOrReplaceGlobalTem
+pView("longer_flights")
+
+spark.sql("""SELECT * FROM longer_flights""").show(10)
+
+// Global temp view was not found for whatever reason...
+
