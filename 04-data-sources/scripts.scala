@@ -14,3 +14,11 @@ val df = spark.read.format("csv").option("inferSchema", "true").option("header",
 
 // Create a temporary view
 df.createOrReplaceTempView("us_delay_flights_tbl")
+
+
+// ----------------------
+
+// In Scala
+val schema = "date STRING, delay INT, distance INT, origin STRING, destination STRING"
+
+val df = spark.read.format("csv").option("header", "true").schema(schema).load(csvFile)
