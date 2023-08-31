@@ -7,3 +7,6 @@ spark.udf.register("cubed", cubed)
 // Create temporary view
 spark.range(1, 9).createOrReplaceTempView("udf_test")
 
+// In Scala/Python
+// Query the cubed UDF
+spark.sql("SELECT id, cubed(id) AS id_cubed FROM udf_test").show()
