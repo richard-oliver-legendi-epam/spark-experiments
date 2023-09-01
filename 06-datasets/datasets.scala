@@ -65,6 +65,23 @@ val bloggersDS = spark.read.format("json").option("path", "data/blogs.json").loa
 bloggersDS.show(5)
 
 
+import java.util.Calendar
+val earliestYear = Calendar.getInstance.get(Calendar.YEAR) - 40
+personDS
+ // Everyone above 40: lambda-1
+ .filter(x => x.birthDate.split("-")(0).toInt > earliestYear)
+
+ // Everyone earning more than 80K
+ .filter($"salary" > 80000)
+
+ // Last name starts with J: lambda-2
+ .filter(x => x.lastName.startsWith("J"))
+
+ // First name starts with D
+ .filter($"firstName".startsWith("D"))
+ .count()
+
+
 // Quick version with DSL - avoids serializatoin
 personDS
  .filter(year($"birthDate") > earliestYear) // Everyone above 40
