@@ -63,3 +63,14 @@ dsUsage.map(u => {computeUserCostUsage(u)}).show(5)
 val bloggersDS = spark.read.format("json").option("path", "data/blogs.json").load().as[Bloggers]
 
 bloggersDS.show(5)
+
+
+// Quick version with DSL - avoids serializatoin
+personDS
+ .filter(year($"birthDate") > earliestYear) // Everyone above 40
+ .filter($"salary" > 80000) // Everyone earning more than 80K
+ .filter($"lastName".startsWith("J")) // Last name starts with J
+ .filter($"firstName".startsWith("D")) // First name starts with D
+ .count()
+
+
