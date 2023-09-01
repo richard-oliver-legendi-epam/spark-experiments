@@ -7,6 +7,7 @@ val bloggersDS = spark.read.format("json").option("path", bloggers).load().as[Bl
 // -----------------------
 
 import scala.util.Random._
+
 // Our case class for the Dataset
 case class Usage(uid:Int, uname:String, usage: Int)
 
@@ -21,3 +22,10 @@ val data = for (i <- 0 to 100)
 // Create a Dataset of Usage typed data
 val dsUsage = spark.createDataset(data)
 dsUsage.show(10)
+
+
+import org.apache.spark.sql.functions._
+dsUsage
+ .filter(d => d.usage > 900)
+ .orderBy(desc("usage"))
+ .show(5, false)
