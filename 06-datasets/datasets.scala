@@ -45,3 +45,15 @@ dsUsage.map(u => {computeCostUsage(u.usage)}).show(5, false)
 
 
 
+// Create a new case class with an additional field, cost
+case class UsageCost(uid: Int, uname:String, usage: Int, cost: Double)
+
+// Compute the usage cost with Usage as a parameter
+// Return a new object, UsageCost
+def computeUserCostUsage(u: Usage): UsageCost = {
+ val v = if (u.usage > 750) u.usage * 0.15 else u.usage * 0.50
+ UsageCost(u.uid, u.uname, u.usage, v)
+}
+
+// Use map() on our original Dataset
+dsUsage.map(u => {computeUserCostUsage(u)}).show(5)
