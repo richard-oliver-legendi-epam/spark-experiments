@@ -57,3 +57,9 @@ def computeUserCostUsage(u: Usage): UsageCost = {
 
 // Use map() on our original Dataset
 dsUsage.map(u => {computeUserCostUsage(u)}).show(5)
+
+
+
+val bloggersDS = spark.read.format("json").option("path", "data/blogs.json").load().as[Bloggers]
+
+bloggersDS.show(5)
