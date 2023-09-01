@@ -29,3 +29,19 @@ dsUsage
  .filter(d => d.usage > 900)
  .orderBy(desc("usage"))
  .show(5, false)
+
+
+// Use an if-then-else lambda expression and compute a value
+dsUsage.map(u => {if (u.usage > 750) u.usage * .15 else u.usage * .50 }).show(5, false)
+
+// Define a function to compute the usage
+Working with Datasets | 163
+def computeCostUsage(usage: Int): Double = {
+ if (usage > 750) usage * 0.15 else usage * 0.50
+}
+
+// Use the function as an argument to map()
+dsUsage.map(u => {computeCostUsage(u.usage)}).show(5, false)
+
+
+
