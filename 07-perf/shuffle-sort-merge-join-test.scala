@@ -21,3 +21,19 @@ val usersOrdersDF = ordersDF.join(usersDF, $"users_id" === $"uid")
 
 // Show the joined results
 usersOrdersDF.show(false)
+
+
+scala> usersOrdersDF.explain()
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- SortMergeJoin [users_id#42], [uid#13], Inner
+   :- Sort [users_id#42 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(users_id#42, 200), ENSURE_REQUIREMENTS, [plan_id=106]
+   :     +- LocalTableScan [transaction_id#40, quantity#41, users_id#42, amount#43, state#44, items#45]
+   +- Sort [uid#13 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(uid#13, 200), ENSURE_REQUIREMENTS, [plan_id=107]
+         +- LocalTableScan [uid#13, login#14, email#15, user_state#16]
+
+
+
+scala>
